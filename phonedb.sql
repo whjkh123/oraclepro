@@ -1,14 +1,8 @@
-DROP TABLE person;
-
-DROP SEQUENCE seq_person_id;
-
 CREATE TABLE person (person_id NUMBER(5),
                      name VARCHAR2(30) NOT NULL,
                      hp VARCHAR2(20),
                      company VARCHAR2(20),
                      PRIMARY KEY (person_id));
-
-CREATE SEQUENCE seq_person_id INCREMENT by 1 START WITH 1;
 
 ----------------------------------------------------------
 
@@ -32,10 +26,6 @@ SELECT  person_id,
         company
 FROM    person
 ORDER BY person_id;
-
-UPDATE person SET hp = '010-9999-9999', company = '02-9999-9999' WHERE person_id = 4;
-
-DELETE FROM person WHERE person_id = 5;
 
 COMMIT;
 

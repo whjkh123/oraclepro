@@ -12,33 +12,7 @@ public class PhoneApp {
 		List<PersonVo> pList = pDao.dbList();
 
 		Scanner sc = new Scanner(System.in);
-		/*
-		PersonVo pIsrtVo01 = new PersonVo("이효리", "010-1111-1111", "02-1111-1111");
-		PersonVo pIsrtVo02 = new PersonVo("정우성", "010-2222-2222", "02-2222-2222");
-		PersonVo pIsrtVo03 = new PersonVo("유재석", "010-3333-3333", "02-3333-3333");
-		PersonVo pIsrtVo04 = new PersonVo("이정재", "010-4444-4444", "02-4444-4444");
-		PersonVo pIsrtVo05 = new PersonVo("서장훈", "010-5555-5555", "02-5555-5555");
 
-		pDao.dbIsrt(pIsrtVo01);
-		pDao.dbIsrt(pIsrtVo02);
-		pDao.dbIsrt(pIsrtVo03);
-		pDao.dbIsrt(pIsrtVo04);
-		pDao.dbIsrt(pIsrtVo05);
-
-		PersonVo pUpdVo = new PersonVo(4, "010-9999-9999", "02-9999-9999");
-
-		pDao.dbUpd(pUpdVo);
-
-		pDao.dbDle(5);
-
-		pList = pDao.dbList();
-
-		for (int i = 0; i < pList.size(); i++) {
-
-			PersonVo pData = pList.get(i);
-			System.out.println(pData.person_id + ", " + pData.name + ", " + pData.hp + ", " + pData.company);
-		}
-		*/
 		System.out.println("*****************************************");
 		System.out.println("*	      전화번호 관리 프로그램	    	*");
 		System.out.println("*****************************************");
@@ -63,7 +37,7 @@ public class PhoneApp {
 				for (int i = 0; i < pList.size(); i++) {
 
 					PersonVo pData = pList.get(i);
-					System.out.println(pData.getPerson_id() + ", " + pData.getName() + ", " + pData.getHp() + ", "	+ pData.getCompany());
+					System.out.println(pData.getPerson_id() + ", " + pData.getName() + ", " + pData.getHp() + ", " + pData.getCompany());
 				}
 
 				System.out.println("");
@@ -122,7 +96,7 @@ public class PhoneApp {
 
 					for (int i = 0; i < pList.size(); i++) {
 						PersonVo pData = pList.get(i);
-						System.out.println(pData.getPerson_id() + ", " + pData.getName() + ", " + pData.getHp() + ", "	+ pData.getCompany());
+						System.out.println(pData.getPerson_id() + ", " + pData.getName() + ", " + pData.getHp() + ", " + pData.getCompany());
 					}
 					System.out.println("");
 					sc.nextLine();

@@ -89,13 +89,15 @@ public class PhoneDao {
 
 			String query = "";
 			query += " update person ";
-			query += " SET hp = ?, ";
+			query += " SET name = ?, ";
+			query += " hp = ?, ";
 			query += " company = ? ";
 			query += " WHERE person_id = ? ";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, pVo.getHp());
-			pstmt.setString(2, pVo.getCompany());
-			pstmt.setInt(3, pVo.getPerson_id());
+			pstmt.setString(1, pVo.getName());
+			pstmt.setString(2, pVo.getHp());
+			pstmt.setString(3, pVo.getCompany());
+			pstmt.setInt(4, pVo.getPerson_id());
 
 			count = pstmt.executeUpdate();
 
@@ -151,7 +153,7 @@ public class PhoneDao {
 			query += "        hp, ";
 			query += "        company ";
 			query += " from   person ";
-			query += " order by person_id ";
+			query += " order by person_id asc ";
 			pstmt = conn.prepareStatement(query);
 
 			rs = pstmt.executeQuery();
@@ -162,6 +164,54 @@ public class PhoneDao {
 				String name = rs.getString("name");// String name = rs.getInt(2);
 				String hp = rs.getString("hp");// String hp = rs.getInt(3);
 				String company = rs.getString("company");// String company = rs.getInt(4);
+
+				PersonVo pVo = new PersonVo(person_id, name, hp, company);
+
+				pList.add(pVo);
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+
+		close();
+
+		return pList;
+
+	}
+
+	public List<PersonVo> dbSearch(String str) {
+
+		List<PersonVo> pList = new ArrayList<PersonVo>();
+
+		dbCnt();
+
+		try {
+
+			String query = "";
+			query += " select	person_id, ";
+			query += " 			name, ";
+			query += " 			hp, ";
+			query += " 			company ";
+			query += " from		person ";
+			query += " where	name like ? ";
+			query += " 			or hp like ? ";
+			query += " 			or company like ? ";
+			query += " order by person_id asc ";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + str + "%");
+			pstmt.setString(2, "%" + str + "%");
+			pstmt.setString(3, "%" + str + "%");
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				int person_id = rs.getInt(1);// int person_id = rs.getInt(1);
+				String name = rs.getString(2);// String name = rs.getInt(2);
+				String hp = rs.getString(3);// String hp = rs.getInt(3);
+				String company = rs.getString(4);// String company = rs.getInt(4);
 
 				PersonVo pVo = new PersonVo(person_id, name, hp, company);
 

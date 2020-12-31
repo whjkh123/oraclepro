@@ -1,3 +1,9 @@
+CREATE USER phonedb IDENTIFIED BY phonedb;
+
+GRANT resource, CONNECT TO phonedb;
+
+----------------------------------------------------------
+
 CREATE TABLE person (person_id NUMBER(5),
                      name VARCHAR2(30) NOT NULL,
                      hp VARCHAR2(20),
